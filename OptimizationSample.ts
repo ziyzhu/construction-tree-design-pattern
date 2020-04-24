@@ -34,6 +34,7 @@ class GenericDataObject {
     let dataObjectList = [this];
     let rooms = [this];
 
+    // aggregate all the nodes on the next lower level until RoomDataObject level is reached
     while (!(dataObjectList[0] instanceof RoomDataObject)) {
       rooms = [];
       for (const dataObject of dataObjectList) {
