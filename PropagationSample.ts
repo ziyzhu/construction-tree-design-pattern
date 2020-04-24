@@ -60,7 +60,7 @@ class FloorDataObject extends GenericDataObject {
 
 class RoomDataObject extends GenericDataObject {
   private data: IRoomData;
-  private children: []; // children is empty since it's a leaf node.
+  private children: []; // children will be empty since it's a leaf node.
 
   private updateData() {
     // send a request to API Endpoint Z}
