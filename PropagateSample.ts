@@ -24,14 +24,14 @@ class GenericDataObject {
   private data: IGenericData;
   private children: GenericDataObject[];
 
-  private updateData() {
+  private updateData(propagate: boolean) {
     // send a request to default API Endpoint
-  }
-  // updates itself and its children
-  private updateSubtree() {
-    this.updateData();
-    for (const child of this.children) {
-      child.updateChildren();
+
+    // updates its children
+    if (propagate) {
+      for (const child of this.children) {
+        child.updateData(true);
+      }
     }
   }
 }
@@ -40,7 +40,7 @@ class BuildingDataObject extends GenericDataObject {
   private data: IBuildingData;
   private children: FloorDataObject[];
 
-  private updateData() {
+  private updateData(propagate: boolean) {
     // send a request to API Endpoint X} and parse response data to update itself
   }
 }
@@ -49,7 +49,7 @@ class FloorDataObject extends GenericDataObject {
   private data: IFloorData;
   private children: RoomDataObject[];
 
-  private updateData() {
+  private updateData(propagate: boolean) {
     // send a request to API Endpoint Y} and parse response data to update itself
   }
 }
@@ -58,7 +58,7 @@ class RoomDataObject extends GenericDataObject {
   private data: IRoomData;
   private children: []; // children is empty since it's a leaf node.
 
-  private updateData() {
+  private updateData(propagate: boolean) {
     // send a request to API Endpoint Z} and parse response data to update itself
   }
 }
