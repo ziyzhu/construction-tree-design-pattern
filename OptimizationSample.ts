@@ -28,7 +28,7 @@ class GenericDataObject {
   private data: IGenericData;
   private children: GenericDataObject[];
 
-  // greedily reserve a room and return room information
+  // greedily reserve a room and return room information if succeeded
   public scheduleMeeting(meeting: IMeeting): RoomDataObject | undefined {
     // get all the rooms that belong to the current Data Object
     let dataObjectList = [this];
@@ -55,6 +55,8 @@ class GenericDataObject {
         return room;
       }
     }
+
+    // no rooms available
     return undefined;
   }
 }
